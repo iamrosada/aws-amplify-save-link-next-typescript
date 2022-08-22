@@ -7,6 +7,7 @@
   padding: 4rem 0;
   flex: 1;
   display: flex;
+
   justify-content: center;
   align-items: center;
 }
@@ -27,26 +28,36 @@
   height: 40rem;
 }
 .card_music {
-  border: 1px solid #eaeaea;
-  border-radius: 5px;
-  padding: 5px;
+  padding: 9px;
   width: 40rem;
   font-size: 1rem;
   line-height: 1.15;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
-.card_music > iframe {
+
+.card_music > a > iframe {
   border-radius: 5px;
   height: 18vh;
+  width: 39rem;
 }
 .card_music > div {
   display: flex;
+
   justify-content: flex-end;
 }
-.card_music:hover,
-.card_music:focus,
-.card_music:active {
+.cards {
+  padding: 9px;
+  width: 40rem;
+  color: red;
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.cards:hover,
+.cards:focus,
+.cards:active {
   color: #0070f3;
   border-color: #0070f3;
 }
