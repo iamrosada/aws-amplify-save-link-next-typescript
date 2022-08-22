@@ -1,3 +1,4 @@
+import React from "react";
 import type { GetServerSideProps } from "next";
 import { Amplify, API, withSSRContext } from "aws-amplify";
 import awsExports from "../aws-exports";
@@ -17,7 +18,11 @@ Amplify.configure({ ...awsExports, ssr: true });
 
 const Home = ({ songs = [] }: { songs: Song[] }) => {
   const router = useRouter();
+  const [hydrated, setHydrated] = React.useState(false);
   const [isLike, setIsLike] = useState(0);
+  React.useEffect(() => {
+    setHydrated(true);
+  }, []);
   async function handleCreateSong(event: any) {
     event.preventDefault();
     const form = new FormData(event.target);
@@ -54,12 +59,12 @@ const Home = ({ songs = [] }: { songs: Song[] }) => {
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               />
-              <a className={styles.left} key={song.id}>
+              <div className={styles.left} key={song.id}>
                 <h3 className={styles.title1}>titulo: {song.title}</h3>
                 <p className={styles.description}>
                   descrição: {song.description}
                 </p>
-              </a>
+              </div>
             </a>
           ))}
         </div>
