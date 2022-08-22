@@ -1,3 +1,40 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "standard-with-typescript"],
+  "overrides": [],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    //para quebrar a linha depois de alguns destructuring
+    "object-curly-newline": [
+      // "error",
+      // "never",
+      { "ExportDeclaration": { "multiline": false, "minProperties": 3 } }
+    ],
+    //para terminar sem virgula
+    "comma-dangle": ["error", "never"],
+    //aspas duplas
+    "quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true
+      }
+    ],
+    //permitir escrever jsx em um arquivo js
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "global-require": "off",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowTaggedTemplates": true
+      }
+    ]
+  }
 }
