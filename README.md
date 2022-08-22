@@ -35,7 +35,13 @@ $ npm install
 $ npm run dev
 
 
+
+
+
+
 ```
+https://user-images.githubusercontent.com/59142372/185989820-34295ec9-9771-43ef-962d-fd7d896c1164.mp4
+
 
 ### Autor
 
