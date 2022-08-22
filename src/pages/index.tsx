@@ -1,11 +1,5 @@
-import type {
-  GetServerSideProps,
-  NextPage,
-  NextApiRequest,
-  NextApiResponse,
-} from "next";
+import type { GetServerSideProps } from "next";
 import { Amplify, API, withSSRContext } from "aws-amplify";
-import Head from "next/head";
 import awsExports from "../aws-exports";
 import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
@@ -52,51 +46,62 @@ const Home = ({ songs = [] }: { songs: Song[] }) => {
     }
   }
   return (
-    <div>
-      <span>
-        {songs.map((song) => (
-          <a href={`/song/${song.id}`} key={song.id}>
-            <h3>{song.title}</h3>
-            <p>{song.description}</p>
-          </a>
-        ))}
-      </span>
-      <div className={styles.card}>
-        <h3 className={styles.title}>New Song</h3>
+    <div className={styles.container}>
+      <main className={styles.main}>
+        <div className={styles.card_music}>
+          <iframe
+            src="https://www.youtube.com/embed/mu9jTNjodqc"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          />
+          <div>
+            {songs.map((song) => (
+              <a href={`/song/${song.id}`} key={song.id}>
+                <h3 className={styles.title1}>titulo: {song.title}</h3>
+                <p className={styles.description}>
+                  descrição: {song.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className={styles.card}>
+          <h3 className={styles.title}>New Song</h3>
 
-        <form onSubmit={handleCreatesong}>
-          <fieldset>
-            <legend>Title</legend>
-            <input defaultValue="Type your song favorite" name="title" />
-          </fieldset>
-          <fieldset>
-            <legend>file path</legend>
-            <input defaultValue="filepath" name="filepath" />
-          </fieldset>
-          <fieldset>
-            <legend> number</legend>
-            <input
-              name="like"
-              placeholder="is number"
-              type="number"
-              onChange={(e) => setIsLike(parseInt(e.target.value))}
-            />
-          </fieldset>
-          <fieldset>
-            <legend>owner</legend>
-            <input name="owner" />
-          </fieldset>
-          <fieldset>
-            <legend>Content</legend>
-            <textarea
-              defaultValue="I built an Amplify app with Next.js!"
-              name="content"
-            />
-          </fieldset>
+          <form onSubmit={handleCreatesong}>
+            <fieldset>
+              <legend>Title</legend>
+              <input defaultValue="Type your song favorite" name="title" />
+            </fieldset>
+            <fieldset>
+              <legend>file path</legend>
+              <input defaultValue="filepath" name="filepath" />
+            </fieldset>
+            <fieldset>
+              <legend> number</legend>
+              <input
+                name="like"
+                placeholder="is number"
+                type="number"
+                onChange={(e) => setIsLike(parseInt(e.target.value))}
+              />
+            </fieldset>
+            <fieldset>
+              <legend>owner</legend>
+              <input name="owner" />
+            </fieldset>
+            <fieldset>
+              <legend>Content</legend>
+              <textarea
+                defaultValue="I built an Amplify app with Next.js!"
+                name="content"
+              />
+            </fieldset>
 
-          <button>Create song</button>
-        </form>
-      </div>
+            <button>Create song</button>
+          </form>
+        </div>
+      </main>
     </div>
   );
 };

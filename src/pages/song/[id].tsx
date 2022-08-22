@@ -47,13 +47,29 @@ function SongPage({ song }: { song: Song }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>{song.title}</h1>
-        <p className={styles.description}>{song.description}</p>
+      <main className={styles.mainbig}>
+        <iframe
+          className={styles.bigiframe}
+          src="https://www.youtube.com/embed/mu9jTNjodqc"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        />
+        <div className={styles.about}>
+          <h1 className={styles.description}>{song.title}</h1>
+          <div style={{ display: "flex", marginLeft: "20rem" }}>
+            <p className={styles.description}>
+              descrição:{"  "}
+              {song.description}
+            </p>
+          </div>
+        </div>
       </main>
 
-      <footer>
-        <button className={styles.footer} onClick={handleDelete}>
+      <footer className={styles.footer}>
+        <button className={styles.titleback} onClick={() => router.push(`/`)}>
+          Voltar
+        </button>
+        <button className={styles.titledele} onClick={handleDelete}>
           💥 Delete song
         </button>
       </footer>
