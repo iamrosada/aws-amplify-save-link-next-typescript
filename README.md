@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# aws DynamoDB
 
-## Getting Started
+O objetivo deste projeto é apenas criar uma ligação com o banco de dados da AWS, o DynamoDB, e usando o `GraphQL` para fazer manipulação dos dados.
 
-First, run the development server:
+O Amazon DynamoDB é um serviço de banco de dados `NoSQL` totalmente gerenciado que fornece uma performance rápida e previsível com escalabilidade integrada.
+
+### 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [GraphQL](https://graphql.org/)
+- [Nextjs](https://nextjs.org/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Amplify](https://www.sanity.io/)
+- [DynamoDB](https://aws.amazon.com/dynamodb/)
+- [Vercel](https://vercel.com/)
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/).
+Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 ```bash
-npm run dev
-# or
-yarn dev
+# clone the project
+$ git clone git@github.com:iamrosada/aws-amplify-save-link-next-typescript.git
+
+# open the folder of project
+# install dependencies
+$ npm install
+
+# serve with hot reload at localhost:3000
+$ npm run dev
+
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Autor
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/59142372?v=4" width="100px;" alt=""/>
+ <br />
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Feito com ❤️ por Luis de Água Rosada 👋🏽 Entre em contato!
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[![Twitter Badge](https://img.shields.io/badge/-@iamrosada_-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/iamrosada_)](https://twitter.com/iamrosada_)
+[![Gmail Badge](https://img.shields.io/badge/-luisrosada@mail.ru-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:luisrosada@mail.ru)](mailto:luisrosada@mail.ru)
