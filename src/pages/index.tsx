@@ -18,7 +18,7 @@ Amplify.configure({ ...awsExports, ssr: true });
 const Home = ({ songs = [] }: { songs: Song[] }) => {
   const router = useRouter();
   const [isLike, setIsLike] = useState(0);
-  async function handleCreatesong(event: any) {
+  async function handleCreateSong(event: any) {
     event.preventDefault();
     const form = new FormData(event.target);
 
@@ -26,7 +26,7 @@ const Home = ({ songs = [] }: { songs: Song[] }) => {
       const createInput: CreateSongInput = {
         description: form.get("content")?.toString() || "",
         like: isLike,
-        filePath: form.get("filepath")?.toString() || "",
+        filePath: form.get("filepath")?.toString().substring(17) || "",
         owner: form.get("owner")?.toString() || "",
         title: form.get("title")?.toString() || "",
       };
@@ -41,64 +41,64 @@ const Home = ({ songs = [] }: { songs: Song[] }) => {
       router.push(`/song/${request.data.createSong?.id}`);
     } catch ({ errors }) {
       console.log(errors);
-      // console.error(...errors:);
-      // throw new Error(errors[0].message);
     }
   }
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <div className={styles.card_music}>
-          <iframe
-            src="https://www.youtube.com/embed/mu9jTNjodqc"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          />
-          <div>
-            {songs.map((song) => (
-              <a href={`/song/${song.id}`} key={song.id}>
+          {songs.map((song) => (
+            <a className={styles.cards} href={`/song/${song.id}`} key={song.id}>
+              <iframe
+                src={`https://www.youtube.com/embed/${song.filePath}/?controls=0`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              />
+              <a className={styles.left} key={song.id}>
                 <h3 className={styles.title1}>titulo: {song.title}</h3>
                 <p className={styles.description}>
                   descrição: {song.description}
                 </p>
               </a>
-            ))}
-          </div>
+            </a>
+          ))}
         </div>
         <div className={styles.card}>
-          <h3 className={styles.title}>New Song</h3>
+          <h3 className={styles.title}> Nova Musica</h3>
 
-          <form onSubmit={handleCreatesong}>
+          <form onSubmit={handleCreateSong}>
             <fieldset>
               <legend>Title</legend>
-              <input defaultValue="Type your song favorite" name="title" />
+              <input placeholder="escreva a tua musica favorita" name="title" />
             </fieldset>
             <fieldset>
-              <legend>file path</legend>
-              <input defaultValue="filepath" name="filepath" />
+              <legend>Link do youtube</legend>
+              <input name="filepath" />
             </fieldset>
             <fieldset>
-              <legend> number</legend>
+              <legend>Avaliação, 1 até 10</legend>
               <input
                 name="like"
-                placeholder="is number"
+                placeholder="Avaliação, 1 até 10"
                 type="number"
                 onChange={(e) => setIsLike(parseInt(e.target.value))}
               />
             </fieldset>
             <fieldset>
-              <legend>owner</legend>
+              <legend>Artista</legend>
               <input name="owner" />
             </fieldset>
-            <fieldset>
-              <legend>Content</legend>
+            <fieldset style={{ marginBottom: "10px" }}>
+              <legend>Diz sobre o teu amor com essa musica</legend>
               <textarea
-                defaultValue="I built an Amplify app with Next.js!"
+                defaultValue="Eu amo, essa musica, devido"
                 name="content"
               />
             </fieldset>
 
-            <button>Create song</button>
+            <button style={{ width: "100%" }} className={styles.titleback}>
+              salva uma musica
+            </button>
           </form>
         </div>
       </main>
@@ -112,7 +112,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const response = (await SSR.API.graphql({ query: listSongs })) as {
     data: ListSongsQuery;
   };
-
+  console.log(response.data.listSongs?.items);
   return {
     props: {
       songs: response.data.listSongs?.items,

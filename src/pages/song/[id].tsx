@@ -50,7 +50,7 @@ function SongPage({ song }: { song: Song }) {
       <main className={styles.mainbig}>
         <iframe
           className={styles.bigiframe}
-          src="https://www.youtube.com/embed/mu9jTNjodqc"
+          src={`https://www.youtube.com/embed/${song.filePath}/`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         />
